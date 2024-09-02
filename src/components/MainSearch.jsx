@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form , Button} from "react-bootstrap";
 import Job from "./Job";
-
+import { useNavigate } from 'react-router-dom'
 const MainSearch = () => {
   const [query, setQuery] = useState("");
   const [jobs, setJobs] = useState([]);
-
+  const navigate = useNavigate()
   const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 
   const handleChange = e => {
@@ -33,6 +33,7 @@ const MainSearch = () => {
       <Row>
         <Col xs={10} className="mx-auto my-3">
           <h1 className="display-1">Remote Jobs Search</h1>
+          <Button onClick={() => navigate('/favourites')}>Favourites</Button>
         </Col>
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>
